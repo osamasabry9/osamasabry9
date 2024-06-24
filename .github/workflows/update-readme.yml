@@ -1,8 +1,8 @@
 name: Update README
 
 on:
-  schedule: # execute every 12 hours
-    - cron: "* */12 * * *"
+  schedule:
+    - cron: '0 */12 * * *'  # Execute every 12 hours
   push:
     branches:
       - main
@@ -11,14 +11,19 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: npm install -g @actions/github-script
+
+      - name: Install @octokit/core
+        run: npm install @octokit/core
+
       - name: Update README
         env:
           RED_GITHUB_TOKEN: ${{ secrets.RED_GITHUB_TOKEN }}
         run: |
-          node update-readme.js
+          node ./.github/scripts/update-readme.js
