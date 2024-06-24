@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // GitHub Token
-const token = process.env.GITHUB_TOKEN;
+const token = process.env.RED_GITHUB_TOKEN;
 const octokit = new Octokit({ auth: token });
 
 // Read the current README file
