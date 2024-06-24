@@ -6,7 +6,7 @@ const token = process.env.RED_GITHUB_TOKEN;
 const octokit = new Octokit({ auth: token });
 
 // README file path
-const readmePath = './README.md';
+const readmePath = '././README.md';
 
 // Function to fetch latest repositories
 async function fetchLatestRepos() {
