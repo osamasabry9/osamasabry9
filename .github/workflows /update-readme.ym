@@ -17,5 +17,8 @@ jobs:
         with:
           node-version: '14'
       - run: npm install -g @actions/github-script
-      - run: |
-          github-scripts update-readme.js
+      - name: Update README
+        env:
+          RED_GITHUB_TOKEN: ${{ secrets.RED_GITHUB_TOKEN }}
+        run: |
+          node update-readme.js
