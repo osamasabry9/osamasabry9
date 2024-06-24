@@ -38,14 +38,11 @@
 </p>
 
 ### 📊 Latest Repositories
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=osamasabry9&repo=repository-name)](https://github.com/osamasabry9/repository-name)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=osamasabry9&repo=another-repo-name)](https://github.com/osamasabry9/another-repo-name)
+<!--START_SECTION:repos-->
+<!--END_SECTION:repos-->
 
 ### 🔥 GitHub Activity
 <!--START_SECTION:activity-->
-1. 💬 Commented on [#123](https://github.com/osamasabry9/repo/issues/123) in [osamasabry9/repo](https://github.com/osamasabry9/repo)
-2. 🗣 Commented on [#456](https://github.com/osamasabry9/another-repo/issues/456) in [osamasabry9/another-repo](https://github.com/osamasabry9/another-repo)
-3. 💪 Opened PR [#789](https://github.com/osamasabry9/repo/pull/789) in [osamasabry9/repo](https://github.com/osamasabry9/repo)
 <!--END_SECTION:activity-->
 
 
