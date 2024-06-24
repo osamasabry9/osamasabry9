@@ -1,4 +1,4 @@
-import fs from 'fs/promises'; // Use fs promises API for async operations
+import { promises as fs } from 'fs'; // Import promises API from fs module
 import { Octokit } from "@octokit/core";
 
 // GitHub Token
