@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs/promises'; // Use fs promises API for async operations
 import { Octokit } from "@octokit/core";
 
 // GitHub Token
@@ -38,10 +38,14 @@ async function fetchGitHubActivity() {
 }
 
 // Function to update the README file content
-function updateREADME(repos, activities) {
+async function updateREADME() {
   try {
-    let readmeContent = fs.readFileSync(readmePath, 'utf8');
+    let readmeContent = await fs.readFile(readmePath, 'utf8');
     
+    // Fetch data
+    const repos = await fetchLatestRepos();
+    const activities = await fetchGitHubActivity();
+
     // Update Latest Repositories section
     const repoList = repos.map(repo => `- [${repo.name}](${repo.html_url}): ${repo.description}`).join('\n');
     readmeContent = readmeContent.replace(
@@ -62,23 +66,12 @@ function updateREADME(repos, activities) {
     );
 
     // Write updated content to README
-    fs.writeFileSync(readmePath, readmeContent);
+    await fs.writeFile(readmePath, readmeContent);
     console.log('README updated successfully!');
   } catch (error) {
     console.error('Error updating README:', error);
   }
 }
 
-// Main function to fetch data and update README
-async function main() {
-  try {
-    const repos = await fetchLatestRepos();
-    const activities = await fetchGitHubActivity();
-    updateREADME(repos, activities);
-  } catch (error) {
-    console.error('Error in main function:', error);
-  }
-}
-
-// Execute main function
-main();
+// Execute updateREADME function
+updateREADME();
