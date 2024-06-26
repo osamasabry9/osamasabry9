@@ -1,14 +1,11 @@
 import { promises as fs } from 'fs';
 import { Octokit } from "@octokit/core";
 
-// GitHub Token
 const token = process.env.RED_GITHUB_TOKEN;
 const octokit = new Octokit({ auth: token });
 
-// README file path
 const readmePath = './README.md';
 
-// Function to fetch latest repositories
 async function fetchLatestRepos() {
   try {
     const response = await octokit.request('GET /users/{username}/repos', {
@@ -23,7 +20,6 @@ async function fetchLatestRepos() {
   }
 }
 
-// Function to fetch recent GitHub activity
 async function fetchGitHubActivity() {
   try {
     const response = await octokit.request('GET /users/{username}/events', {
@@ -37,23 +33,19 @@ async function fetchGitHubActivity() {
   }
 }
 
-// Function to update the README file content
 async function updateREADME() {
   try {
     let readmeContent = await fs.readFile(readmePath, 'utf8');
     
-    // Fetch data
     const repos = await fetchLatestRepos();
     const activities = await fetchGitHubActivity();
 
-    // Update Latest Repositories section
     const repoList = repos.map(repo => `- [${repo.name}](${repo.html_url}): ${repo.description}`).join('\n');
     readmeContent = readmeContent.replace(
       /<!--START_SECTION:repos-->[\s\S]*<!--END_SECTION:repos-->/,
       `<!--START_SECTION:repos-->\n${repoList}\n<!--END_SECTION:repos-->`
     );
 
-    // Update GitHub Activity section
     const activityList = activities.map(activity => {
       const action = activity.payload.action || activity.payload.ref_type || activity.type;
       const repoName = activity.repo.name;
@@ -65,7 +57,6 @@ async function updateREADME() {
       `<!--START_SECTION:activity-->\n${activityList}\n<!--END_SECTION:activity-->`
     );
 
-    // Write updated content to README
     await fs.writeFile(readmePath, readmeContent);
     console.log('README updated successfully!');
   } catch (error) {
@@ -73,5 +64,4 @@ async function updateREADME() {
   }
 }
 
-// Execute updateREADME function
 updateREADME();
