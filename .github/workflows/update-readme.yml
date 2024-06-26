@@ -19,11 +19,10 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install @octokit/core
-        run: npm install @octokit/core
+      - name: Install dependencies
+        run: npm install
 
       - name: Update README
         env:
           RED_GITHUB_TOKEN: ${{ secrets.RED_GITHUB_TOKEN }}
-        run: |
-          node --experimental-modules --es-module-specifier-resolution=node ./.github/scripts/update-readme.js
+        run: node ./.github/scripts/update-readme.mjs
