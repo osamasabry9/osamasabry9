@@ -8,9 +8,9 @@
 
 <p align="left"> <a href="https://twitter.com/o_sabri7" target="blank"><img src="https://img.shields.io/twitter/follow/o_sabri7?logo=twitter&style=for-the-badge" alt="o_sabri7" /></a> </p>
 
-- 🌱 I’m currently learning **Flutter and Node Js**
+- 🌱 I’m currently learning **Flutter and Kotlin and Node Js**
 
-- 💬 Ask me about **Flutter or Node Js.**
+- 💬 Ask me about **Flutter or Kotlin or Node Js.**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
@@ -44,8 +44,6 @@
 ### 🔥 GitHub Activity
 <!--START_SECTION:activity-->
 <!--END_SECTION:activity-->
-
-
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
